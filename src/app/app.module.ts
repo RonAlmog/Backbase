@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { TransferComponent } from './components/transfer/transfer.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { HomeComponent } from './components/home/home.component';
 import { TransactionsService } from './services/transactions.service';
+import { OrderByPipe } from './services/orderby.pipe';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import { TransactionsService } from './services/transactions.service';
     TopbarComponent,
     TransferComponent,
     TransactionsComponent,
-    HomeComponent
+    HomeComponent,
+    OrderByPipe
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-
+    AngularFontAwesomeModule,
+    
 
   ],
   providers: [

@@ -5,13 +5,24 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm">
-          titles
+          <input type="text" class="form-control" placeholder="Search by typing...">  
+        </div>
+        <div class="col-sm">
+          Sory by 
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn btn-primary" (click)="sort('transactionDate')">DATE 
+                  <i *ngIf="sortingName=='transactionDate'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
+              <button type="button" class="btn btn-primary" (click)="sort('merchant')">BENIFICIARY 
+                <i *ngIf="sortingName=='merchant'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
+              <button type="button" class="btn btn-primary" (click)="sort('amount')">AMOUNT 
+                <i *ngIf="sortingName=='amount'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
+            </div>
         </div>
       </div>
       <div class="row">
           <div class="col-sm">
             <table class="table">
-              <tr *ngFor="let tran of transactions">
+              <tr *ngFor="let tran of transactions | orderBy:sortingName:isDesc">
                 <td class="category" [style.background-color]="tran.categoryCode"></td>
                 <td>{{tran.transactionDate | date:'MMM. dd'}}</td>
                 <td><img src="{{tran.merchantLogo}}" class="merchant-logo"></td>
