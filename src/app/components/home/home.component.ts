@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionsService } from 'src/app/services/transactions.service';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private transactionsService: TransactionsService
+  ) { }
 
   ngOnInit() {
+    this.transactionsService.getJSON().subscribe(data => {
+      console.log('data', data);
+    });
+    
   }
 
 }
