@@ -3,6 +3,22 @@
       <h3>Recent Transactions</h3>
     </div>
     <div class="card-body">
-      Basic card
+      <div class="row">
+        <div class="col-sm">
+          titles
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm">
+            <table class="table">
+              <tr *ngFor="let tran of transactions">
+                <td>{{tran.transactionDate | date:'MMM. dd'}}</td>
+                <td><img src="{{tran.merchantLogo}}" class="merchant-logo"></td>
+                <td>{{tran.merchant}}</td>
+                <td>{{tran.amount | currency:'$'}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
     </div>
   </div>
