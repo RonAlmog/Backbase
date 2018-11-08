@@ -12,6 +12,7 @@
           <div class="col-sm">
             <table class="table">
               <tr *ngFor="let tran of transactions">
+                <td class="category" [style.background-color]="tran.categoryCode"></td>
                 <td>{{tran.transactionDate | date:'MMM. dd'}}</td>
                 <td><img src="{{tran.merchantLogo}}" class="merchant-logo"></td>
                 <td>{{tran.merchant}}</td>

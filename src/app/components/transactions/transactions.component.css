@@ -1,4 +1,12 @@
 .merchant-logo {
   width: 50px;
+}
+.category {
+  width: 10px;
+  padding: 0;
+  margin: 0;
+}
 
+td {
+  vertical-align: middle;
 }
