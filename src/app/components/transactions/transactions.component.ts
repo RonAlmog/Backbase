@@ -9,6 +9,7 @@ export class TransactionsComponent implements OnInit {
   @Input() transactions: any[] = [];
   sortingName = 'transactionDate';
   isDesc = false;
+  searchBy = '';
 
   constructor() { }
 

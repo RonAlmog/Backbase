@@ -5,7 +5,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm">
-          <input type="text" class="form-control" placeholder="Search by typing...">  
+          <input type="text" class="form-control" [(ngModel)]="searchBy" placeholder="Search by typing...">  
         </div>
         <div class="col-sm">
           Sory by 
@@ -22,7 +22,7 @@
       <div class="row">
           <div class="col-sm">
             <table class="table">
-              <tr *ngFor="let tran of transactions | orderBy:sortingName:isDesc">
+              <tr *ngFor="let tran of transactions | orderBy:sortingName:isDesc | filterBy: searchBy">
                 <td class="category" [style.background-color]="tran.categoryCode"></td>
                 <td>{{tran.transactionDate | date:'MMM. dd'}}</td>
                 <td><img src="{{tran.merchantLogo}}" class="merchant-logo"></td>
