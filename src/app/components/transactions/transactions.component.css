@@ -10,3 +10,32 @@
 td {
   vertical-align: middle;
 }
+
+.merchant{
+  font-weight: 500;
+  font-size: 1.2em;
+
+}
+.trantype {
+  font-weight: 400;
+  font-size: 1em;
+}
+.amount {
+  font-weight: 500;
+  font-size: 1.2em;
+}
+.sort-button {
+  border: 1px solid rgb(82, 82, 82);
+  background-color: #fff;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 0 !important;
+}
+.searchbar {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.green-title {
+  background-color: #0c8397;
+
+}

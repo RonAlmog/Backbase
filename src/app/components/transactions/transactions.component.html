@@ -4,17 +4,17 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-sm">
-          <input type="text" class="form-control" [(ngModel)]="searchBy" placeholder="Search by typing...">  
+        <div class="col-xl-5 col-12 searchbar">
+          <input type="search" class="form-control" [(ngModel)]="searchBy" placeholder="Search by typing...">
         </div>
-        <div class="col-sm">
+        <div class="col-xl-7 col-12 searchbar">
           Sory by 
             <div class="btn-group btn-group-sm">
-              <button type="button" class="btn btn-primary" (click)="sort('transactionDate')">DATE 
+              <button type="button" class="btn sort-button" (click)="sort('transactionDate')">DATE 
                   <i *ngIf="sortingName=='transactionDate'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
-              <button type="button" class="btn btn-primary" (click)="sort('merchant')">BENIFICIARY 
+              <button type="button" class="btn sort-button" (click)="sort('merchant')">BENIFICIARY 
                 <i *ngIf="sortingName=='merchant'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
-              <button type="button" class="btn btn-primary" (click)="sort('amount')">AMOUNT 
+              <button type="button" class="btn sort-button" (click)="sort('amount')">AMOUNT 
                 <i *ngIf="sortingName=='amount'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
             </div>
         </div>
@@ -26,8 +26,11 @@
                 <td class="category" [style.background-color]="tran.categoryCode"></td>
                 <td>{{tran.transactionDate | date:'MMM. dd'}}</td>
                 <td><img src="{{tran.merchantLogo}}" class="merchant-logo"></td>
-                <td>{{tran.merchant}}</td>
-                <td>{{tran.amount | currency:'$'}}</td>
+                <td>
+                  <span class="merchant">{{tran.merchant}}</span><br>
+                  <span class="trantype">{{tran.transactionType}}</span>
+                </td>
+                <td><span class="amount">{{tran.amount | currency:'$'}}</span></td>
               </tr>
             </table>
           </div>
