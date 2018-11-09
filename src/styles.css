@@ -10,3 +10,12 @@
   float: left;
   width: 32px;
 }
+.formlabel {
+  font-size: 1em;
+  font-weight: 600;
+}
+.control-underline {
+  border-width: 0px 0px 2px 0px;
+  border-radius: 0;
+
+}

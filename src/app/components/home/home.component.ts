@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from 'src/app/services/transactions.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,7 +18,10 @@ export class HomeComponent implements OnInit {
       console.log('data', data);
       this.transactions = data.data;
     });
+  }
 
+  addTransaction(tran: any) {
+    this.transactions.push(tran);
   }
 
 }

@@ -4,6 +4,34 @@
     Make a Transfer
   </div>
   <div class="card-body">
-    Basic card
+      <form [formGroup]="tranForm" (ngSubmit)="makeTransfer()">
+          <div class="form-group">
+            <label for="fromAccount" class="formlabel">FROM ACCOUNT</label>
+            <input type="text" id="fromAccount" fromAccount="task" 
+              formControlName="fromAccount" class="form-control control-underline" placeholder="fromAccount">
+          </div>
+          <div class="form-group">
+            <label for="toAccount" class="formlabel">TO ACCOUNT</label>
+            <input type="text" id="toAccount" name="toAccount" 
+              formControlName="toAccount" class="form-control control-underline" placeholder="Pleae enter the target account">
+          </div>
+          <div class="form-group">
+            <label for="amount" class="formlabel">AMOUNT</label>
+            <input type="text" id="amount" name="amount" 
+              formControlName="amount" class="form-control control-underline" placeholder="amount">
+          </div>
+          <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8">
+                <button type="submit" 
+                class="btn btn-primary submit-button btn-block" 
+                >SUBMIT</button>
+                <!-- [disabled]="!tranForm.valid" -->
+            </div>
+          </div>
+          
+      </form>
   </div>
 </div>
