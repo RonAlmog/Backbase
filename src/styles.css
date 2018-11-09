@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.green-title {
+  background-color: #0c8397;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+  height: 60px;
+}
+.tabicon {
+  float: left;
+  width: 32px;
+}
