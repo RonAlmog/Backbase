@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Kanit');
+@import url('https://fonts.googleapis.com/css?family=Kanit:300,400');
 body {
   background-image: url('../src/assets/background.jpg');
   background-size: cover;
@@ -8,8 +8,8 @@ body {
 .green-title {
   background-color: #0c8397;
   color: #fff;
-  font-size: 1.2em;
-  font-weight: 600;
+  font-size: 1.3em;
+  font-weight: 300;
   height: 60px;
 }
 .tabicon {
