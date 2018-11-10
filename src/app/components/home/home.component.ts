@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.transactionsService.getJSON().subscribe(data => {
-      console.log('data', data);
       this.transactions = data.data;
     });
   }

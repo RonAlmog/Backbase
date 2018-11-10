@@ -36,7 +36,6 @@ export class TransferComponent implements OnInit {
 
   ngOnInit() {
     this.tranForm = this.formBuilder.group({
-      // fromAccount: new FormControl('', [Validators.required]),
       toAccount: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9.]*$')])
     });
@@ -50,8 +49,6 @@ export class TransferComponent implements OnInit {
     if (this.tranForm.invalid) {
       return;
     }
-    console.log('form', this.tranForm.value);
-    console.log('amount', this.tranForm.value.amount);
     this.amount = this.asNumber(this.tranForm.value.amount);
     this.toAccount = this.tranForm.value.toAccount;
     if (this.balance - this.amount > this.masOverDraft) {
@@ -65,7 +62,6 @@ export class TransferComponent implements OnInit {
   }
 
   transfer() {
-    console.log('form', this.tranForm.value);
     this.myTransaction.merchantLogo = this.transactions[0].merchantLogo,
     this.myTransaction.amount = this.amount;
     this.myTransaction.transactionDate = new Date();
@@ -78,12 +74,6 @@ export class TransferComponent implements OnInit {
     this.f.toAccount.setValue('');
     this.f.amount.setValue('');
     this.submitted = false;
-
-  }
-
-  validate(): boolean {
-    console.log('amount', this.tranForm.value.amount);
-    return true;
 
   }
 

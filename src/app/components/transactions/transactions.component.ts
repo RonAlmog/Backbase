@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TransactionsComponent implements OnInit {
   @Input() transactions: any[] = [];
   sortingName = 'transactionDate';
-  isDesc = false;
+  isDesc = true;
   searchBy = '';
 
   constructor() { }
