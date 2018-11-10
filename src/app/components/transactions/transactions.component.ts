@@ -25,4 +25,8 @@ export class TransactionsComponent implements OnInit {
     this.sortingName = name;
   }
 
+  clearSearch() {
+    this.searchBy = '';
+  }
+
 }

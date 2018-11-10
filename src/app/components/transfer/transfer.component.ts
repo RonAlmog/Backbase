@@ -22,7 +22,7 @@ export class TransferComponent implements OnInit {
     'transactionType': 'Online Transfer'
   };
   accountName = 'Free Checking(4692)';
-  balance = 1000.76;
+  balance = 5824.76;
   masOverDraft = -500;
   amount = 0;
   toAccount = '';

@@ -6,9 +6,22 @@
     <div class="card-body">
       <div class="row">
         <div class="col-xl-5 col-12 searchbar mb-3">
-          <input type="search" class="form-control control-underline" [(ngModel)]="searchBy" placeholder="Search by typing...">
+            <div class="row form-row">
+                
+                    <div class="col-11">
+                    <input type="search" class="form-control control-underline" [(ngModel)]="searchBy" placeholder="Search by typing...">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-light" type="button" (click)="clearSearch()"><i class="fa fa-close"></i></button>
+                    </div>
+                
+            </div>
+          
         </div>
-        <div class="col-xl-7 col-12 searchbar">
+        
+
+
+        <div class="col-xl-7 col-12 searchbar text-right">
           Sory by 
             <div class="btn-group btn-group-sm">
               <button type="button" class="btn sort-button" (click)="sort('transactionDate')">DATE 
