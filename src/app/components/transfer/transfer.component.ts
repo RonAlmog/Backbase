@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-transfer',
@@ -29,7 +30,9 @@ export class TransferComponent implements OnInit {
   previewMessage = '';
   validTransaction = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.tranForm = this.formBuilder.group({
@@ -68,6 +71,7 @@ export class TransferComponent implements OnInit {
     this.balance = this.balance - this.amount;
     this.pushTransaction.emit(this.myTransaction);
     this.showPreview = false;
+    this.toastrService.success('Your transaction was successful.', 'Success!');
 
   }
 
