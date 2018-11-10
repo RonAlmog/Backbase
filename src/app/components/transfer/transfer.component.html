@@ -4,10 +4,11 @@
     Make a Transfer
   </div>
   <div class="card-body">
+    <div *ngIf="!showPreview">
     <form [formGroup]="tranForm" (ngSubmit)="preview()">
       <div class="form-group">
         <label for="fromAccount" class="formlabel">FROM ACCOUNT</label>
-        <input type="text" id="fromAccount" name="fromAccount" value="{{accountName}} - {{balance}}" class="form-control control-underline"
+        <input type="text" id="fromAccount" name="fromAccount" value="{{accountName}}  {{balance | currency:'$'}}" class="form-control control-underline"
           placeholder="fromAccount" disabled>
       </div>
       <div class="form-group">
@@ -18,6 +19,8 @@
           placeholder="Pleae enter the target account">
         <div *ngIf="submitted && f.toAccount.errors" class="invalid-feedback">
           <div *ngIf="f.toAccount.errors.required">To Account is required</div>
+          <div *ngIf="f.toAccount.errors.minlength">Too short. 3 chars minimum</div>
+          <div *ngIf="f.toAccount.errors.maxlength">Too long. 20 chars maximum</div>
         </div>
 
         
@@ -30,23 +33,20 @@
         placeholder="amount">
         <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
           <div *ngIf="f.amount.errors.required">Amount is required</div>
+          <div *ngIf="f.amount.errors.pattern">Numbers only please!</div>
         </div>
-          
       </div>
       <div class="row">
-        <div class="col-4">
-
-        </div>
+        <div class="col-4"></div>
         <div class="col-8">
           <button type="submit" class="btn btn-primary submit-button btn-block">SUBMIT</button>
-          <!-- [disabled]="!tranForm.valid" -->
         </div>
       </div>
-
     </form>
+    </div>
 
     <div *ngIf="showPreview">
-    <div class="preview" >
+    <div class="alert" [ngClass]="{'alert-success': validTransaction, 'alert-danger': !validTransaction}">
       <div class="row p-2">
         <div class="col-4 formlabel">
           From:
@@ -80,15 +80,24 @@
         </div>
       </div>
     </div>
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="alert" [ngClass]="{'alert-success': validTransaction, 'alert-danger': !validTransaction}" 
+          [innerHtml]="previewMessage">
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-4">
         <button type="button" class="btn btn-warning" (click)="cancelPreview()">CANCEL</button>
       </div>
       <div class="col-8">
-        <button type="button" class="btn btn-primary submit-button btn-block" (click)="transfer()">TRANSFER</button>
-        <!-- [disabled]="!tranForm.valid" -->
+        <button type="button" class="btn btn-primary submit-button btn-block" 
+        (click)="transfer()" [disabled]="!validTransaction">TRANSFER</button>
+        
       </div>
     </div>
+    
   </div>
 
   </div>

@@ -12,8 +12,8 @@ export class TransferComponent implements OnInit {
 
   tranForm: FormGroup;
   submitted = false;
-  demoTransaction: any = {
-    'amount': '99.99',
+  myTransaction: any = {
+    'amount': '0',
     'categoryCode': '#ff0000',
     'merchantLogo': '',
     'merchant': 'Amazon Online Store',
@@ -22,17 +22,20 @@ export class TransferComponent implements OnInit {
   };
   accountName = 'Free Checking(4692)';
   balance = 1000.76;
+  masOverDraft = -500;
   amount = 0;
   toAccount = '';
   showPreview = false;
+  previewMessage = '';
+  validTransaction = false;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.tranForm = this.formBuilder.group({
       // fromAccount: new FormControl('', [Validators.required]),
-      toAccount: new FormControl('', [Validators.required]),
-      amount: new FormControl('', [Validators.required])
+      toAccount: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9.]*$')])
     });
   }
 
@@ -48,13 +51,23 @@ export class TransferComponent implements OnInit {
     console.log('amount', this.tranForm.value.amount);
     this.amount = this.asNumber(this.tranForm.value.amount);
     this.toAccount = this.tranForm.value.toAccount;
+    if (this.balance - this.amount > this.masOverDraft) {
+      this.validTransaction = true;
+      this.previewMessage = '<strong>All good.</strong><br>Your transaction is valid';
+    } else {
+      this.validTransaction = false;
+      this.previewMessage = '<strong>Insufficient funds.</strong><br>Your transaction is invalid';
+    }
     this.showPreview = true;
   }
 
   transfer() {
     console.log('form', this.tranForm.value);
-    this.demoTransaction.merchantLogo = this.transactions[0].merchantLogo,
-    this.pushTransaction.emit(this.demoTransaction);
+    this.myTransaction.merchantLogo = this.transactions[0].merchantLogo,
+    this.myTransaction.amount = this.amount;
+    this.balance = this.balance - this.amount;
+    this.pushTransaction.emit(this.myTransaction);
+    this.showPreview = false;
 
   }
 
