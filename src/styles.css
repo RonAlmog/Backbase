@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+body {
+  background-image: url('../src/assets/background.jpg');
+  background-size: cover;
+  font-family: 'Kanit', sans-serif;
+}
 .green-title {
   background-color: #0c8397;
   color: #fff;
@@ -11,7 +17,7 @@
   width: 32px;
 }
 .formlabel {
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 600;
 }
 .control-underline {

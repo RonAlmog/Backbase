@@ -14,16 +14,15 @@ td {
   padding-top: 7px;
 }
 .merchant{
-  font-weight: 500;
   font-size: 1.2em;
-
+  font-weight: 500
 }
 .trantype {
   font-weight: 400;
   font-size: 1em;
 }
 .amount {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.2em;
 }
 .sort-button {

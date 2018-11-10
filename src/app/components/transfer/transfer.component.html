@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-3">
   <div class="card-header green-title text-center">
     <img src="../../../assets/icons/exchange.png" class="tabicon">
     Make a Transfer
@@ -8,13 +8,13 @@
     <form [formGroup]="tranForm" (ngSubmit)="preview()">
       <div class="form-group">
         <label for="fromAccount" class="formlabel">FROM ACCOUNT</label>
-        <input type="text" id="fromAccount" name="fromAccount" value="{{accountName}}  {{balance | currency:'$'}}" class="form-control control-underline"
+        <input type="text" id="fromAccount" name="fromAccount" value="{{accountName}}  {{balance | currency:'$'}}" class="form-control control-underline disabled"
           placeholder="fromAccount" disabled>
       </div>
       <div class="form-group">
         <label for="toAccount" class="formlabel">TO ACCOUNT</label>
         <input type="text" id="toAccount" name="toAccount" formControlName="toAccount" 
-        class="form-control control-underline"
+        class="form-control control-underline" autocomplete="off"
         [ngClass]="{ 'is-invalid': submitted && f.toAccount.errors }"
           placeholder="Pleae enter the target account">
         <div *ngIf="submitted && f.toAccount.errors" class="invalid-feedback">
@@ -28,9 +28,9 @@
       <div class="form-group">
         <label for="amount" class="formlabel">AMOUNT</label>
         <input type="text" id="amount" name="amount" formControlName="amount" 
-        class="form-control control-underline"
+        class="form-control control-underline" autocomplete="off"
         [ngClass]="{ 'is-invalid': submitted && f.amount.errors }"
-        placeholder="amount">
+        placeholder="Please enter amount">
         <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
           <div *ngIf="f.amount.errors.required">Amount is required</div>
           <div *ngIf="f.amount.errors.pattern">Numbers only please!</div>
