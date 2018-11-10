@@ -1,0 +1,53 @@
+<div class="card mb-3">
+    <div class="card-header green-title text-center">
+        <img src="../../../assets/icons/suitcase.png" class="tabicon">
+      Recent Transactions
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-5 col-12 searchbar mb-3">
+            <div class="row form-row">
+                
+                    <div class="col-11">
+                    <input type="search" class="form-control control-underline" [(ngModel)]="searchBy" placeholder="Search by typing...">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-light" type="button" (click)="clearSearch()"><i class="fa fa-close"></i></button>
+                    </div>
+                
+            </div>
+          
+        </div>
+        
+
+
+        <div class="col-xl-7 col-12 searchbar text-right">
+          Sory by 
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn sort-button" (click)="sort('transactionDate')">DATE 
+                  <i *ngIf="sortingName=='transactionDate'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
+              <button type="button" class="btn sort-button" (click)="sort('merchant')">BENIFICIARY 
+                <i *ngIf="sortingName=='merchant'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
+              <button type="button" class="btn sort-button" (click)="sort('amount')">AMOUNT 
+                <i *ngIf="sortingName=='amount'" [ngClass]="{'fa':true, 'fa-caret-down':isDesc, 'fa-caret-up':!isDesc}"></i></button>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm">
+            <table class="table">
+              <tr *ngFor="let tran of transactions | orderBy:sortingName:isDesc | filterBy: searchBy">
+                <td class="category" [style.background-color]="tran.categoryCode"></td>
+                <td>{{tran.transactionDate | date:'MMM. dd'}}</td>
+                <td><img src="{{tran.merchantLogo}}" class="merchant-logo"></td>
+                <td>
+                  <span class="merchant">{{tran.merchant}}</span><br>
+                  <span class="trantype">{{tran.transactionType}}</span>
+                </td>
+                <td><span class="amount">{{tran.amount | currency:'$'}}</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>

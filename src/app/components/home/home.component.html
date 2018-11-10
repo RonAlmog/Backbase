@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-lg-4">
+    <app-transfer [transactions]="transactions" (pushTransaction)="addTransaction($event)"></app-transfer>
+  </div>
+  <div class="col-lg-8">
+    <app-transactions [transactions]="transactions"></app-transactions>
+  </div>
+</div>
+
