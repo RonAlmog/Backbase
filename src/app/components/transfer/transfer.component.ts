@@ -68,10 +68,16 @@ export class TransferComponent implements OnInit {
     console.log('form', this.tranForm.value);
     this.myTransaction.merchantLogo = this.transactions[0].merchantLogo,
     this.myTransaction.amount = this.amount;
+    this.myTransaction.transactionDate = new Date();
+    this.myTransaction.merchant = this.toAccount;
     this.balance = this.balance - this.amount;
     this.pushTransaction.emit(this.myTransaction);
     this.showPreview = false;
-    this.toastrService.success('Your transaction was successful.', 'Success!');
+    this.toastrService.success(`Your transaction of $${this.amount} was successful.`, 'Success!');
+    // clear form
+    this.f.toAccount.setValue('');
+    this.f.amount.setValue('');
+    this.submitted = false;
 
   }
 
