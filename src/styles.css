@@ -12,6 +12,17 @@ body {
   font-weight: 300;
   height: 60px;
 }
+.card-header {
+  border-radius: 0px !important;
+  border-color: #0c8397;
+}
+.card {
+  border-radius: 2px;
+  border-color: #0c8397;
+  -webkit-box-shadow: 2px -2px 26px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px -2px 26px -7px rgba(0,0,0,0.75);
+  box-shadow: 2px -2px 26px -7px rgba(0,0,0,0.75);
+}
 .tabicon {
   float: left;
   width: 32px;
