@@ -17,8 +17,7 @@ body {
   border-color: #0c8397;
 }
 .card {
-  border-radius: 2px;
-  border-color: #0c8397;
+  border-width: 0px;
   -webkit-box-shadow: 2px -2px 26px -7px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px -2px 26px -7px rgba(0,0,0,0.75);
   box-shadow: 2px -2px 26px -7px rgba(0,0,0,0.75);
